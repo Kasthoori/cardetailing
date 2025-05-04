@@ -1,10 +1,13 @@
-import { AppBar } from "@mui/material";
+import { AppBar, Toolbar } from "@mui/material";
 import { FC } from "react";
+import { toolBarClass } from "./NavBar.styles";
 
 const NavBar:FC = () => {
 	return (
 		<AppBar position="static">
-			NavBar Component
+            <Toolbar className={toolBarClass}>
+			    NavBar Component
+            </Toolbar>
 		</AppBar>
 	);
 }
