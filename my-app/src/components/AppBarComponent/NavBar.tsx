@@ -30,14 +30,14 @@ const NavBar:FC = () => {
 		<AppBar position="static" sx={{ backgroundColor: '#000000' }} className="shadow-md">
 			<Toolbar className={toolBarClass}>
 				<Typography variant="h6" className={typhographyClass}>
-					Car Detailing
+					Revive Auto Detailing
 				</Typography>
 				<div className="hidden md:flex space-x-6">
 					{navItems.map((item) => (
 						<a
 							key={item}
 							href="#"
-							className="hover:text-blue-600 transition font-medium"
+							className="hover:text-blue-600 transition font-light"
 						>
 							{item}
 						</a>
@@ -46,7 +46,8 @@ const NavBar:FC = () => {
 				<div className="block md:hidden">
 				<IconButton
 					edge="end"
-					size="large"
+					size="medium"
+					aria-label="menu"
 					onClick={toggleDrawer(true)}
 					color="inherit"
 				>
@@ -61,7 +62,7 @@ const NavBar:FC = () => {
 			open={drawerOpen}
 			onClose={toggleDrawer(false)}
 		>
-			<div className="w-64">
+			<div className="w-48 bg-gray-300 h-full">
 				<List>
 					{navItems.map((item) => (
 						<ListItem component="button" key={item} onClick={toggleDrawer(false)}>
