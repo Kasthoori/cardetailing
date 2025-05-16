@@ -1,4 +1,5 @@
 import { FC } from "react";
+import {motion, AnimatePresence} from "framer-motion";
 import {
     container,
     itemHeading,
@@ -35,11 +36,26 @@ const ServiceItem:FC<ServiceItemProps> = ({title, price, isOpen, onToggle, descr
                     </button>
                 </div>
             </div>
-            {isOpen && (
+            <AnimatePresence initial={false}>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.4 }}
+                    >
+                        <div className={descriptionBody}>
+                            {description}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+            {/* {isOpen && (
+
                 <div className={descriptionBody}>
                     {description}
                 </div>
-            )}
+            )} */}
         </div>
     );
 }
