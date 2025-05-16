@@ -9,8 +9,9 @@ const App:FC = () => {
     <div>
       <NavBar />
       <BannerImage />
-      <AboutUsComponent /><br /><br />
+      <AboutUsComponent />
       <ServicesComponent />
+      
     </div>
   )
 }
