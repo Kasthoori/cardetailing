@@ -1,4 +1,4 @@
-import { fireEvent, render } from '@testing-library/react';
+import { findByText, fireEvent, render } from '@testing-library/react';
 import ServiceItem from './ServiceItem';
 import { describe, it, expect, vi } from 'vitest';
 import '@testing-library/jest-dom';
@@ -22,7 +22,7 @@ describe('ServiceItem Component', () => {
     const props = {
         title: 'Basic Package',
         price: 120,
-        description: 'great for quick refresh',
+        description: 'Great for quick refresh',
         image: '/test.jpg',
         details: mockDetails,
         alt:'test',
@@ -41,6 +41,21 @@ describe('ServiceItem Component', () => {
         const {getByRole} = render(<ServiceItem {...props} />);
         fireEvent.click(getByRole('button'));
         expect(props.onToggle).toHaveBeenCalledTimes(1);
+    });
+
+    it('renders content when isOpen is true', () => {
+        const {queryByText} = render(<ServiceItem {...props} isOpen={false} />);
+        const desc = queryByText(/great for quick refresh/i);
+        expect(desc).not.toBeInTheDocument();
+    });
+
+    it('render description, image, and details  when isOpen is true', () => {
+        const {getByRole, getByText} = render(<ServiceItem {...props} isOpen={true} />);
+
+        expect(getByRole('img')).toHaveAttribute('src', '/test.jpg');
+        expect(getByText('Includes')).toBeInTheDocument();
+        expect(getByText('Wash')).toBeInTheDocument();
+        expect(getByText('Duration 2 hours')).toBeInTheDocument();
     });
 
 });
