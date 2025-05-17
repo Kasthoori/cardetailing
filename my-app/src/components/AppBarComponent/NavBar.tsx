@@ -21,24 +21,22 @@ const NavBar:FC = () => {
 		setDrawerOpen(open);
 	}
 
-	const handleScroll = (section: string) => {
-		let sectionId = '';
+	const sectionIdMap: Record<string, string> = {
+		'Home': 'home-section',
+		'Our Services': 'services-section',
+		'Contact Us' : 'constact-section'
+	}
 
-		switch (section) {
-			case 'Home':
-				sectionId = 'home-section';
-				break;
-			case 'Our Services':
-				sectionId = 'services-section';
-				break;
-			default:
-				return;
-		}
+	const handleScroll = (section: string, event?: React.MouseEvent) => {
+		
+		event?.preventDefault();
+		(event?.currentTarget as HTMLElement)?.blur();
 
-		const element = document.getElementById(sectionId);
-		if (element) {
-			element.scrollIntoView({behavior: 'smooth', block: 'start'})
-		}
+		const sectionId = sectionIdMap[section];
+		if (!sectionId) return;
+		
+		const el = document.getElementById(sectionId);
+		el?.scrollIntoView({behavior: 'smooth', block: 'start'});
 	}
 
 	const navItems = ['Home', 'Our Services', 'Contact Us'];
@@ -55,8 +53,11 @@ const NavBar:FC = () => {
 					{navItems.map((item) => (
 						<a
 							key={item}
-							onClick={() => handleScroll(item)}
-							className="hover:text-blue-600 transition font-light"
+							onClick={(e) => { 
+								requestAnimationFrame(() => e.currentTarget.blur())
+								handleScroll(item)
+							}}
+							className="transition font-light focus:outline-none focus:ring-red-600"
 						>
 							{item}
 						</a>

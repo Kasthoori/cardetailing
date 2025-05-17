@@ -22,7 +22,7 @@ export const services: Service[] = [
        price: 110,
        currency: 'NZD',
        description: 'Exterior and interior cleaning for all car sizes',
-       image: '/src/assets/basic-package.jpg',
+       image: '/src/assets/basic.jpeg',
        details: [
              {
                 title: 'Includes',
