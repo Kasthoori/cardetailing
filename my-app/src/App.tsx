@@ -3,6 +3,7 @@ import NavBar from './components/AppBarComponent/NavBar';
 import BannerImage from './components/BannerComponent';
 import AboutUsComponent from './components/AboutUsComponent';
 import ServicesComponent from './components/ServicesComponent';
+import Footer from './components/FooterComponent';
 
 const App:FC = () => {
 
@@ -26,6 +27,9 @@ const App:FC = () => {
       </section>
       <section id='services-section'>
         <ServicesComponent />
+      </section>
+      <section id='constact-section'>
+        <Footer />
       </section>
     </>  
   )
