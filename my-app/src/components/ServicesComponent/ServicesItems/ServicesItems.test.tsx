@@ -1,4 +1,4 @@
-import {render} from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import ServiceItem from './ServiceItem';
 import { describe, it, expect, vi } from 'vitest';
 import '@testing-library/jest-dom';
@@ -31,9 +31,16 @@ describe('ServiceItem Component', () => {
     }
 
     it('renders title, price, and button correctly', () => {
-        const { getByText } = render(<ServiceItem {...props} />);
+        const { getByText, getByRole } = render(<ServiceItem {...props} />);
         expect(getByText('Basic Package')).toBeInTheDocument();
         expect(getByText('120')).toBeInTheDocument();
+        expect(getByRole('button')).toHaveTextContent('More');
+    });
+
+    it('calls onToggle when button is clicked', () => {
+        const {getByRole} = render(<ServiceItem {...props} />);
+        fireEvent.click(getByRole('button'));
+        expect(props.onToggle).toHaveBeenCalledTimes(1);
     });
 
 });
