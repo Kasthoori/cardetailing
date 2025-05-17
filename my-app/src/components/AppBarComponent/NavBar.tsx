@@ -14,7 +14,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 const NavBar:FC = () => {
 
-
 	const [drawerOpen, setDrawerOpen] = useState(false);
 
 	const toggleDrawer = (open: boolean) => () => {
@@ -22,12 +21,32 @@ const NavBar:FC = () => {
 		setDrawerOpen(open);
 	}
 
-	const navItems = ['Home', 'About Us', 'Contact Us'];
+	const handleScroll = (section: string) => {
+		let sectionId = '';
+
+		switch (section) {
+			case 'Home':
+				sectionId = 'home-section';
+				break;
+			case 'Our Services':
+				sectionId = 'services-section';
+				break;
+			default:
+				return;
+		}
+
+		const element = document.getElementById(sectionId);
+		if (element) {
+			element.scrollIntoView({behavior: 'smooth', block: 'start'})
+		}
+	}
+
+	const navItems = ['Home', 'Our Services', 'Contact Us'];
 
 	return (
 	
 		<>
-		<AppBar position="static" sx={{ backgroundColor: '#000000' }} className="shadow-md">
+		<AppBar position="fixed" sx={{ backgroundColor: '#000000' }} className="shadow-md">
 			<Toolbar className={toolBarClass}>
 				<Typography variant="h6" className={typhographyClass}>
 					Revive Auto Detailing
@@ -36,7 +55,7 @@ const NavBar:FC = () => {
 					{navItems.map((item) => (
 						<a
 							key={item}
-							href="#"
+							onClick={() => handleScroll(item)}
 							className="hover:text-blue-600 transition font-light"
 						>
 							{item}
@@ -65,7 +84,14 @@ const NavBar:FC = () => {
 			<div className="w-48 bg-gray-300 h-full">
 				<List>
 					{navItems.map((item) => (
-						<ListItem component="button" key={item} onClick={toggleDrawer(false)}>
+						<ListItem 
+							component="button" 
+							key={item} 
+							onClick={() => {
+									handleScroll(item)
+									toggleDrawer(false)
+								}}
+						>
 							<ListItemText primary={item} />
 						</ListItem>
 					))}	

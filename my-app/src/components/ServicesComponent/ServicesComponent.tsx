@@ -12,15 +12,17 @@ const ServicesComponent:FC = () => {
 
     return (
         <div className={container}>   
-            <h1 className={serviceHeading}>Services</h1>  
+            <h1 className={serviceHeading}>Our Services</h1>  
             {services.map((service, index) => (
                 <ServiceItem
-                    key={index}
+                    key={service.id}
                     title={service.title}
-                    price={service.price.toString()}
+                    price={service.price}
                     description={service.description}
-                    image={""}
-                    alt={""}
+                    currency={service.currency}
+                    image={service.image}
+                    alt={service.title}
+                    details={service.details}
                     isOpen={openIndex === index}
                     onToggle={() => setOpenIndex(openIndex === index ? null : index)}
                 />

@@ -6,13 +6,20 @@ import ServicesComponent from './components/ServicesComponent';
 
 const App:FC = () => {
   return (
-    <div>
+    <main className='pt-0'>
       <NavBar />
-      <BannerImage />
-      <AboutUsComponent />
-      <ServicesComponent />
+      <section>
+        <BannerImage />
+      </section>
+      <section id='home-section'>
+        <AboutUsComponent />
+      </section>
+      <section id='services-section'>
+        <ServicesComponent />
+      </section>
       
-    </div>
+      
+    </main>
   )
 }
 
