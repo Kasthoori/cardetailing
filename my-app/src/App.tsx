@@ -4,6 +4,7 @@ import BannerImage from './components/BannerComponent';
 import AboutUsComponent from './components/AboutUsComponent';
 import ServicesComponent from './components/ServicesComponent';
 import Footer from './components/FooterComponent';
+import CustomerReviews from './components/CustomerReviewsComponent';
 
 const App:FC = () => {
 
@@ -27,6 +28,9 @@ const App:FC = () => {
       </section>
       <section id='services-section'>
         <ServicesComponent />
+      </section>
+      <section id='customer-reviews'>
+        <CustomerReviews />
       </section>
       <section id='constact-section'>
         <Footer />

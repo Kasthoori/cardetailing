@@ -24,7 +24,8 @@ const NavBar:FC = () => {
 	const sectionIdMap: Record<string, string> = {
 		'Home': 'home-section',
 		'Our Services': 'services-section',
-		'Contact Us' : 'constact-section'
+		'Reviews' : 'customer-reviews',
+		'Contact Us' : 'constact-section',
 	}
 
 	const handleScroll = (section: string, event?: React.MouseEvent) => {
@@ -39,7 +40,7 @@ const NavBar:FC = () => {
 		el?.scrollIntoView({behavior: 'smooth', block: 'start'});
 	}
 
-	const navItems = ['Home', 'Our Services', 'Contact Us'];
+	const navItems = ['Home', 'Our Services', 'Reviews', 'Contact Us'];
 
 	return (
 	
