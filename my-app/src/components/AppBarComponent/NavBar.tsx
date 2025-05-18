@@ -46,9 +46,12 @@ const NavBar:FC = () => {
 		<>
 		<AppBar position="fixed" sx={{ backgroundColor: '#000000' }} className="shadow-md">
 			<Toolbar className={toolBarClass}>
+			<div className="flex items-center space-x-2">
+				<img src="/src/assets/RiviveAutoLogo.jpeg" alt="Logo" className="h-12 w-auto" />
 				<Typography variant="h6" className={typhographyClass}>
 					Revive Auto Detailing
 				</Typography>
+			</div>
 				<div className="hidden md:flex space-x-6">
 					{navItems.map((item) => (
 						<a

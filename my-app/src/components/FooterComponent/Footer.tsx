@@ -1,7 +1,8 @@
 import { useInView } from "react-intersection-observer";
 import { FC } from "react";
 import { Box, Fade, IconButton, Typography } from "@mui/material";
-import {Phone, Email, WhatsApp, Facebook, Twitter, Instagram, YouTube} from '@mui/icons-material';
+import {Phone, Email, WhatsApp, Facebook, Instagram} from '@mui/icons-material';
+import { FaTiktok } from 'react-icons/fa';
 
 const Footer:FC = () => {
 
@@ -51,35 +52,32 @@ const Footer:FC = () => {
                 {[
                     {
                         label: 'WhatsApp',
-                        href: 'https://wa.me/64123456789',
+                        href: ' https://wa.me/64224643410',
                         color: '#25D366',
                         icon: <WhatsApp />,
                     },
                     {
                         label:'Facebook',
-                        href: 'https://facebook.com/cardetailingnz',
+                        href: 'https://www.facebook.com/share/1Beb2TwnBw/',
                         color: '#1877F2',
                         icon: <Facebook />,
                     },
-                    {
-                        label:'Twitter',
-                        href: 'https://twitter.com/cardetailingnz',
-                        color:'#1DA1F2',
-                        icon: <Twitter />
-                    },
+                
                     {
                         label: 'Instagram',
-                        href: 'https://instagram.com/cardetailingnz',
+                        href: 'https://www.instagram.com/reviveautodetailingnz?igsh=amFxMWFnbDBvYzNs',
                         color: '#E1306C',
                         icon: <Instagram />
 
                     },
+
                     {
-                        label: 'YouTube',
-                        href: 'https://youtube.com/@cardetailingnz',
-                        color: '#FF0000',
-                        icon: <YouTube />
+                        label: 'TikTok',
+                        href: 'https://www.tiktok.com/@reviveautodetailing12?_t=ZS-8wRytWVO0nv&_r=1',
+                        color: '#010101', // TikTok black
+                        icon: <FaTiktok size={24} color="white" />,
                     },
+
                 ].map(({label, href, color, icon}) => (
                     <IconButton
                         key={label}
@@ -104,7 +102,7 @@ const Footer:FC = () => {
             </Box>
             <Typography
                 variant="body2"
-                className="text-gray-400 text-center md:text-right"
+                className="text-gray-500 text-center md:text-right"
                 sx={{width: '100%'}}
             >
                 &copy; {new Date().getFullYear()} Rivive Auto Detailing. All rights reserved.
