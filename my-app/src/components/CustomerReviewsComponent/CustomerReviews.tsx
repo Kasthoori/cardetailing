@@ -1,8 +1,8 @@
-import { FC, useEffect, useState } from "react";
+import { FC, Fragment, useEffect, useRef, useState } from "react";
 import {Review} from './Review';
 import { dummyReviews } from "./dummyReviews";
 import {
-    addDoc,
+  addDoc,
   collection,
   DocumentData,
   getDocs,
@@ -13,8 +13,9 @@ import {
   Timestamp,  
 } from 'firebase/firestore';
 import {db} from '../../firebase';
-import { Box, Button, Card, CardContent, Rating, TextField, Typography} from "@mui/material";
+import { Box, Button, Card, CardContent, Dialog, DialogActions, DialogContent, DialogTitle, Icon, IconButton, Rating, TextField, Typography} from "@mui/material";
 import Grid from '@mui/material/Grid';
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 
 const PAGE_SIZE = 3;
 
@@ -27,6 +28,8 @@ const CustomerReviews:FC = () => {
     const [rating, setRating] = useState<number | null>(5)
     const [lastDoc, setLastDoc] = useState<DocumentData | null>(null);
     const [hasMore, setHasMore] = useState(true);
+    const [open, setOpen] = useState<boolean>(false);
+    const scrollBoxRef = useRef<HTMLDivElement>(null)
 
     // const fetchReviews = async (initial = false) => {
     //     let reviewsQuery = query(
@@ -70,10 +73,12 @@ const CustomerReviews:FC = () => {
         } else {
             setReviews(prev => [ ...(prev ?? []), ...nextSet ]);
         }
+
+        setHasMore(start + PAGE_SIZE < dummyReviews.length);
     };
 
     useEffect(() => {
-        fetchReviews(true);
+        setReviews(dummyReviews);
     }, []);
 
     // const handleSubmit = async (e:React.FormEvent) => {
@@ -111,14 +116,38 @@ const CustomerReviews:FC = () => {
         setName("");
         setMessage("");
         setRating(5);
+        setOpen(false);
+    }
+
+    // scroll reviews
+
+    const scroll = (direction: "left" | "right") => {
+        if (scrollBoxRef.current) {
+            const amount = 300;
+            scrollBoxRef.current.scrollBy({
+                left: direction === "left" ? -amount : amount,
+                behavior: 'smooth',
+            })
+        }
     }
 
     return (
         <Box sx={{mt: 10, px: 2}}>
             <Typography variant="h4" gutterBottom textAlign="center">
-                Customer Reviews
+                Testamonials
             </Typography>
 
+            {/* Review Me Button */}
+            <Box textAlign="center" my={2}>
+                <Button variant="contained" onClick={() => setOpen(true)}>
+                    Review Me
+                </Button>
+            </Box>
+
+            {/* Review Form Dialogue */}
+            <Dialog open={open} onClose={() => setOpen(false)}>
+              <DialogTitle>Write a Review</DialogTitle>
+               <DialogContent>
             <Box
                 component="form"
                 onSubmit={handleSubmit}
@@ -151,37 +180,82 @@ const CustomerReviews:FC = () => {
                     value={rating}
                     onChange={(_, newValue) => setRating(newValue)}
                 />
-
-                <Button variant="contained" type="submit">
-                    Submit Review
-                </Button>
+                <DialogActions>
+                    <Button onClick={() => setOpen(false)}>
+                        Cancel
+                    </Button>
+                    <Button type="submit" variant="contained">
+                        Submit
+                    </Button>
+                </DialogActions>
             </Box>
-            <Grid container spacing={3}>
+            </DialogContent>
+            </Dialog>
+
+            {/* Horizontal Scrollable Review Cards */}
+
+            <Box sx={{position: 'relative', mt: 4, px: 6}}>
+                <IconButton
+                    sx={{
+                        position: "absolute",
+                        left: 0,
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        zIndex: 1,
+                        backgroundColor: "white",
+                        border: "1px solid #ccc",
+                    }} 
+                    onClick={() => scroll("left")} 
+                >
+                    <ChevronLeft />
+                </IconButton>
+
+            <Box
+                ref={scrollBoxRef}
+                id="review-scroll-box"
+                sx={{
+                    display: "flex",
+                    gap: 2,
+                    overflowX: "auto",
+                    scrollBehavior: "smooth",
+                    pb: 2,
+                    '&::-webkit-scrollbar':{height: '6px'},
+                    '&::-webkit-scrollbar-thumb' : {backgroundColor: '#ccc', borderRadius: '4px'},
+                }}
+            >
                 {reviews?.map(r => (
-                    <Grid item xs={12} md={6} lg={4} key={r.id}>
-                       <Card elevation={3} component="section">
-                         <CardContent>
+                    <Card
+                        key={r.id}
+                        sx={{minWidth: 300, flexShrink: 0}}
+                        elevation={3}
+                    >
+                        <CardContent>
                             <Typography variant="h6">{r.name}</Typography>
                             <Rating value={r.rating} readOnly />
                             <Typography sx={{mt: 1}}>{r.message}</Typography>
                             <Typography variant="caption" sx={{color: "gray"}}>
-                                {new Date(r.createdAt).toLocaleDateString()}
+                                {new Date(r.createdAt).toDateString()}
                             </Typography>
-                         </CardContent>
-                       </Card>
-                    </Grid>
+                        </CardContent>
+                    </Card>
                 ))}
-            </Grid>
+            </Box>
 
-            {hasMore && (
-                <Box textAlign="center" mt={4}>
-                    <Button onClick={() => fetchReviews()} variant="outlined">
-                        Load More
-                    </Button>
-                </Box>
-            )
-
-            }
+            <IconButton
+                sx={{
+                    position: "absolute",
+                    right: 0,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    zIndex: 1,
+                    backgroundColor: "white",
+                    border: "1px solid #ccc",
+                }}
+                onClick={() => scroll("right")}
+            >
+                <ChevronRight />
+            </IconButton>
+          </Box>
 
         </Box>
     );
