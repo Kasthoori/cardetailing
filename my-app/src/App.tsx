@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react'
 import NavBar from './components/AppBarComponent/NavBar';
-import BannerImage from './components/BannerComponent';
+// import BannerImage from './components/BannerComponent';
 import AboutUsComponent from './components/AboutUsComponent';
 import ServicesComponent from './components/ServicesComponent';
 import Footer from './components/FooterComponent';
@@ -20,9 +20,9 @@ const App:FC = () => {
   return (
    <>
       <NavBar />
-      <section>
+      {/* <section>
         <BannerImage />
-      </section>
+      </section> */}
       <section id='home-section'>
         <AboutUsComponent />
       </section>

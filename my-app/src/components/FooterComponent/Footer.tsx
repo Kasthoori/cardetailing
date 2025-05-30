@@ -37,11 +37,11 @@ const Footer:FC = () => {
                         </Typography>
                         <Typography sx={{display: 'flex', alignItems:'center'}}>
                             <Phone fontSize="small" sx={{mr: 1}} />
-                            +64 123 456 789
+                            +64 22 464 3410
                         </Typography>
                         <Typography sx={{display: 'flex', alignItems:'center'}}>
                             <Email fontSize="small" sx={{mr: 1}} />
-                            infe.riviveautodetails@gmail.com
+                            reviveautodetailingnz@gmail.com
                         </Typography>
                         <Typography>35, FarWood Drive, Henderson, Auckland, New Zealand</Typography>
                     </Box>
