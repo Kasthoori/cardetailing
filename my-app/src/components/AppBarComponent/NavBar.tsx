@@ -10,6 +10,7 @@ import {
 	Toolbar,
 	Typography, 
 } from "@mui/material";
+import Logo from "/src/assets/RiviveAutoLogo.jpeg";
 import MenuIcon from "@mui/icons-material/Menu";
 
 const NavBar:FC = () => {
@@ -48,7 +49,7 @@ const NavBar:FC = () => {
 		<AppBar position="fixed" sx={{ backgroundColor: '#000000' }} className="shadow-md">
 			<Toolbar className={toolBarClass}>
 			<div className="flex items-center space-x-2">
-				<img src="/src/assets/RiviveAutoLogo.jpeg" alt="Logo" className="h-12 w-auto" />
+				<img src={Logo} alt="Logo" className="h-12 w-auto" />
 				<Typography variant="h6" className={typhographyClass}>
 					Revive Auto Detailing
 				</Typography>
