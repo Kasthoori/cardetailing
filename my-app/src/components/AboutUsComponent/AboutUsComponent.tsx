@@ -9,7 +9,7 @@ import {
   button,
   imageSection
 } from "./AboutUs.styles";
-
+import sideImage from "/src/assets/sideCarImage.jpg";
 const AboutUsComponent:FC = () => {
   return (
     <section 
@@ -31,7 +31,7 @@ const AboutUsComponent:FC = () => {
           </div>
           <div className={imageSection}>
             <img
-              src="assets/sideCarImage.jpg"
+              src={sideImage}
               alt="Luxury Car"
               className="w-full rounded-lg shadow-xl"
             />
