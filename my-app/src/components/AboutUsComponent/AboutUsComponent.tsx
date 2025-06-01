@@ -31,7 +31,7 @@ const AboutUsComponent:FC = () => {
           </div>
           <div className={imageSection}>
             <img
-              src="/src/assets/sideCarImage.jpg"
+              src="assets/sideCarImage.jpg"
               alt="Luxury Car"
               className="w-full rounded-lg shadow-xl"
             />
