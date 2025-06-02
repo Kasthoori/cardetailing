@@ -27,7 +27,7 @@ const AboutUsComponent:FC = () => {
               of our customers. We strive for perfection in overy detail, ensuring your vehicle leaves our care looking
               and feeling its absolute best.
             </p>
-            <button  className={button}>Meet the Team</button>
+            {/* <button  className={button}>Meet the Team</button> */}
           </div>
           <div className={imageSection}>
             <img

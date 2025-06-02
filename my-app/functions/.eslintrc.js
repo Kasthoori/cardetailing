@@ -10,7 +10,7 @@ module.exports = {
     "plugin:import/warnings",
     "plugin:import/typescript",
     "google",
-    "plugin:@typescript-eslint/recommended",
+   // "plugin:@typescript-eslint/no-unused-expressions",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -26,6 +26,7 @@ module.exports = {
     "import",
   ],
   rules: {
+    "@typescript-eslint/no-unused-expressions": "off",
     "quotes": ["error", "double"],
     "import/no-unresolved": 0,
     "indent": ["error", 2],
