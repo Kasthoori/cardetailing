@@ -22,7 +22,7 @@ export const services: Service[] = [
        price: 110,
        currency: 'NZD',
        description: 'Exterior and interior cleaning for all car sizes',
-       image: '/src/assets/basic.jpeg',
+       image: '/assets/basic.jpeg',
        details: [
              {
                 title: 'Includes',
@@ -66,7 +66,7 @@ export const services: Service[] = [
       price: 180,
       currency: 'NZD',
       description: 'Includes everything in the Basic Package.',
-      image: '/src/assets/extraPackage.jpeg', 
+      image: '/assets/extraPackage.jpeg', 
       details: [
             {
                 title: 'Includes',
@@ -106,7 +106,7 @@ export const services: Service[] = [
             price: 350,
             currency: 'NZD',
             description: 'Includes everything in the Extra Plus.',
-            image: '/src/assets/vipPackage.jpeg',
+            image: '/assets/vipPackage.jpeg',
             details: [
                 {
                     title: 'Includes',
@@ -146,7 +146,7 @@ export const services: Service[] = [
          currency: 'NZD',
          description: 'Revive Auto Detailing - 2 Year Ceramic Coating Package. Protect your ride with a slick, glossy finish that lasts! Our 2 year ceramic coating offers Long-lasting protection against UV rays, dirt, and grime. Enjoy a hydrophobic surface that repels water and makes cleaning a breeze. Experience the ultimate shine and gloss, UV protection to prevent fading and oxidation, Hydrophobic effect'
          + 'repels water, dirt, and grime, Easier cleaning - contaminants don\'t stick as easily, Chemical resistance and protects from bird droppings, snap, and road salts, Boosts resale value by keeping the paint looking newer and longer.',
-         image: '/src/assets/ceramicCoating.jpg',
+         image: '/assets/ceramicCoating.jpg',
          details: [
                  {
                  title: 'Includes',
@@ -183,7 +183,7 @@ export const services: Service[] = [
         id: 'addons',
         title: 'Add-ons Menu',
         description: 'This includes extra services offer from Revive Auto Detailing.',
-        image: '/src/assets/addonPackage.jpeg',
+        image: '/assets/addonPackage.jpeg',
         details: [
                 {
                     title: 'Includes',
