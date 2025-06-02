@@ -21,7 +21,7 @@ const AboutUsComponent:FC = () => {
           <div className={textSection}>
             <h3 className={subHeading}>Who We Are</h3>
             <p className={paragraph}>
-              Rivive Auto Detailing, located in Henderson Auckland, New Zealand, is your go-to destination
+              Revive Auto Detailing, located in Henderson Auckland, New Zealand, is your go-to destination
               for top-notch auto detailing services for both car owners and dealerships. Our comitment
               to excellence is reflected in the quality of our work, the transparency in our pricing, and the satisfaction
               of our customers. We strive for perfection in overy detail, ensuring your vehicle leaves our care looking
